@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <TableView prefHeight="486.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn editable="false" prefWidth="91.0" sortable="false" text="ID" />
+          <TableColumn editable="false" prefWidth="198.0" sortable="false" text="Nurse" />
+            <TableColumn editable="false" prefWidth="313.0" sortable="false" text="Allocation" />
+            <TableColumn prefWidth="197.0" text="Price" />
+        </columns>
+      </TableView>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="69.0" prefWidth="800.0" text="Total Cost">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="75.0" prefWidth="800.0" text="Computation Speed">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
