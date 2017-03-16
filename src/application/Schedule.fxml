@@ -7,27 +7,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ScheduleController">
    <top>
-      <TableView prefHeight="486.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="allocationTable" prefHeight="538.0" prefWidth="800.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn editable="false" prefWidth="91.0" sortable="false" text="ID" />
-          <TableColumn editable="false" prefWidth="198.0" sortable="false" text="Nurse" />
-            <TableColumn editable="false" prefWidth="313.0" sortable="false" text="Allocation" />
-            <TableColumn prefWidth="197.0" text="Price" />
+          <TableColumn fx:id="id" editable="false" prefWidth="91.0" sortable="false" text="ID" />
+          <TableColumn fx:id="nurseId" editable="false" prefWidth="198.0" sortable="false" text="Nurse" />
+            <TableColumn fx:id="bundle" editable="false" prefWidth="417.0" sortable="false" text="Allocation" />
+            <TableColumn fx:id="cost" prefWidth="93.0" text="Price" />
         </columns>
       </TableView>
    </top>
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="69.0" prefWidth="800.0" text="Total Cost">
+            <Label fx:id="totalCostLabel" prefHeight="52.0" prefWidth="800.0" text="                                                   Total Cost">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="75.0" prefWidth="800.0" text="Computation Speed">
+            <Label fx:id="time" prefHeight="51.0" prefWidth="800.0" text="                                                   Computation Speed">
                <font>
                   <Font size="20.0" />
                </font>

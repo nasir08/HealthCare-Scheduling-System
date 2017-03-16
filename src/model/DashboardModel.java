@@ -38,4 +38,26 @@ public class DashboardModel {
 			requests.setRequestList(resultSet.getInt("requestID"),resultSet.getInt("StandardPrice"));
 		}
 	}
+
+	public void fetchBundles(String query) throws SQLException 
+	{
+		connection = DatabaseConnection.connector();
+		preparedStatement = connection.prepareStatement(query);
+		resultSet = preparedStatement.executeQuery();
+		while(resultSet.next())
+		{
+			nurses.createPool(resultSet.getInt("bundleID")+"-"+resultSet.getString("VisitBundle")+"-"+resultSet.getDouble("Cost")+"-"+resultSet.getInt("nurseID"));
+		}
+	}
+
+	public void fetchNoOfBundles(String query) throws SQLException 
+	{
+		connection = DatabaseConnection.connector();
+		preparedStatement = connection.prepareStatement(query);
+		resultSet = preparedStatement.executeQuery();
+		while(resultSet.next())
+		{
+			nurses.setNoOfBundles(resultSet.getInt("noOfBundles"));
+		}
+	}
 }

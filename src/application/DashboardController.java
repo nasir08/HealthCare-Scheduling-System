@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import data.Nurses;
 import data.Progress;
 import data.Requests;
+import data.Scheduler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -41,15 +42,20 @@ public class DashboardController implements Initializable {
 	private Requests requests = new Requests();
 	private DashboardModel dashboardModel = new DashboardModel();
 	private Progress progress = new Progress();
+	private Scheduler scheduler = new Scheduler();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		String query1 = "SELECT * FROM Nurses";
 		String query2 = "SELECT * FROM Requests";
+		String query3 = "SELECT COUNT(nurseID) As noOfBundles FROM Bundles GROUP BY nurseID";
+		String query4 = "SELECT * FROM Bundles ORDER BY nurseID, Cost ASC";
 		try {
 			dashboardModel.fetchNurses(query1);
 			dashboardModel.fetchRequests(query2);
+			dashboardModel.fetchNoOfBundles(query3);
+			dashboardModel.fetchBundles(query4);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,11 +98,51 @@ public class DashboardController implements Initializable {
 	public void generateSchedule(ActionEvent event) throws InterruptedException, IOException
 	{
 		progressBar.setVisible(true);
-		while(progress.getProgress() < 1)
+		long startTime = System.currentTimeMillis();
+		int count=0;
+		int start = 0;
+		int j=0;
+		String bundle="";
+		double cost = 1000000000;
+		int bundleID=0;
+		int nurseID=0;
+		
+		for(int i=0; i<nurses.getNurseList().size(); i++)
 		{
-			progress.setProgress(progress.getProgress() + 0.1);
+			count+=nurses.getNoOfBundles(i);
+			for(j=start; j<count; j++)
+			{
+				String string = nurses.getPoolItem(j);
+				String[] split = string.split("-");
+				if((Double.parseDouble(split[2]) < cost))
+				{
+					bundleID = Integer.parseInt(split[0]);
+					bundle = split[1];
+					cost = Double.parseDouble(split[2]);
+					nurseID = Integer.parseInt(split[3]);
+				}
+			}
+			start = j;
+			scheduler.createAllocation(bundleID+"-"+bundle+"-"+cost+"-"+nurseID);
+			cost=1000000000;
+			progress.setProgress(progress.getProgress() + 0.2);
 		}
 		
+		scheduler.extractRequests();
+		
+		for(int key: requests.getRequestList().keySet())
+		{
+			String keyString = Integer.toString(key);
+			if(!Scheduler.extractedRequests.contains(keyString))
+			{
+				scheduler.createAllocation("0-"+key+"-"+requests.getRequestList().get(key)+"-Backup Nurse");
+			}
+		}
+		
+		long endTime = System.currentTimeMillis();
+		Scheduler.computationTime = (endTime - startTime);
+		System.out.println(Scheduler.computationTime);
+		System.out.print(Scheduler.computationTime/1000);
 		
 		((Node)event.getSource()).getScene().getWindow().hide();
 		Stage primaryStage = new Stage();
