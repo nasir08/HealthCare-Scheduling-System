@@ -12,29 +12,24 @@
 <AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
       <Label fx:id="connectionStatus" layoutX="7.0" layoutY="6.0" text="Connection Status" />
-      <Button fx:id="btnLogin" layoutX="96.0" layoutY="297.0" mnemonicParsing="false" onAction="#login" text="Login">
+      <Button fx:id="btnLogin" layoutX="166.0" layoutY="322.0" mnemonicParsing="false" onAction="#login" stylesheets="@application.css" text="Login">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField fx:id="txtUserName" layoutX="96.0" layoutY="161.0" promptText="Username">
+      <TextField fx:id="txtUserName" layoutX="96.0" layoutY="181.0" promptText="Username">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="txtPassword" layoutX="96.0" layoutY="233.0" promptText="Password">
+      <PasswordField fx:id="txtPassword" layoutX="96.0" layoutY="244.0" promptText="Password">
          <font>
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Button fx:id="btnQuit" layoutX="261.0" layoutY="297.0" mnemonicParsing="false" text="Quit">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="106.0" fitWidth="200.0" layoutX="100.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="106.0" fitWidth="200.0" layoutX="157.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="img/eVantage-Logo.gif" />
+            <Image url="img/avatar.png" />
          </image>
       </ImageView>
    </children>
