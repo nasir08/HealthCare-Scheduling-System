@@ -3,6 +3,14 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/nasir/Desktop/sqlite-jdbc-3.16.1.jar"/>
+	<classpathentry kind="lib" path="Lib/dom4j-1.6.jar"/>
+	<classpathentry kind="lib" path="Lib/poi-3.2-FINAL.jar"/>
+	<classpathentry kind="lib" path="Lib/poi-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="Lib/poi-examples-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="Lib/poi-ooxml-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="Lib/poi-ooxml-schemas-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="Lib/poi-scratchpad-3.7-20101029.jar"/>
+	<classpathentry kind="lib" path="Lib/sqlite-jdbc-3.16.1.jar"/>
+	<classpathentry kind="lib" path="Lib/xmlbeans-2.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

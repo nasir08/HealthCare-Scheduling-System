@@ -3,21 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DashboardController">
-   <left>
-      <ListView fx:id="nurseListView" onMouseClicked="#selectNurse" prefHeight="502.0" prefWidth="240.0" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <ListView fx:id="requestListView" prefHeight="502.0" prefWidth="240.0" BorderPane.alignment="CENTER" />
-   </right>
-   <center>
-      <Button fx:id="btnGenerate" mnemonicParsing="false" onAction="#generateSchedule" text="Generate Schedule" BorderPane.alignment="CENTER" />
-   </center>
    <top>
       <HBox prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +17,7 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#signOut" prefHeight="39.0" prefWidth="262.0" text="Log Out">
+            <Button mnemonicParsing="false" onAction="#signOut" prefHeight="39.0" prefWidth="339.0" stylesheets="@application.css" text="Log Out">
                <font>
                   <Font name="System Italic" size="18.0" />
                </font>
@@ -34,11 +25,19 @@
          </children>
       </HBox>
    </top>
-   <bottom>
-      <HBox prefHeight="33.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ProgressBar fx:id="progressBar" prefHeight="33.0" prefWidth="820.0" progress="0.0" />
+            <ListView fx:id="nurseListView" onMouseClicked="#selectNurse" prefHeight="761.0" prefWidth="264.0" />
+            <ListView fx:id="requestListView" layoutX="527.0" layoutY="-1.0" onMouseClicked="#selectRequest" prefHeight="762.0" prefWidth="273.0" />
+            <Button fx:id="btnReadFile" layoutX="366.0" layoutY="354.0" mnemonicParsing="false" onAction="#readFile" stylesheets="@application.css" text="Select File" />
+            <Button fx:id="btnGenerate" layoutX="342.0" layoutY="412.0" mnemonicParsing="false" onAction="#generateSchedule" stylesheets="@application.css" text="Generate Schedule" />
+            <Label fx:id="status" layoutX="306.0" layoutY="292.0" text="Selecting File">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
          </children>
-      </HBox>
-   </bottom>
+      </AnchorPane>
+   </center>
 </BorderPane>

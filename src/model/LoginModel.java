@@ -5,9 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import data.Agent;
 import database.DatabaseAccess;
 import database.DatabaseConnection;
+import entities.Agent;
 
 public class LoginModel {
 	
